@@ -8,7 +8,7 @@ trace.set_tracer_provider(TracerProvider())
 tracer = trace.get_tracer(__name__)
 
 otlp_exporter = OTLPSpanExporter(
-    endpoint="http://localhost:8200",  # Replace with actual APM server URL
+    endpoint="http://elastic-apm-server.elastic-system.svc.cluster.local:8200/intake/v2/events",  # Replace with actual APM server URL
     headers={"Authorization": "Bearer SSXSDGSptEv05J0u67E5ew"}
 )
 
