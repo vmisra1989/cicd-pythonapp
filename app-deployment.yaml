@@ -1,0 +1,43 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: py-app
+  namespace: otel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: py-app
+  template:
+    metadata:
+      labels:
+        app: py-app
+    spec:
+      containers:
+        - name: py-app
+          image: vmisra1989/my-python-app:9.0
+          ports:
+            - containerPort: 8081
+          env:
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "elastic-apm-server.elastic-system.svc:8200"
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "gRPC"
+            - name: OTEL_SERVICE_NAME
+              value: "py-app"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "deployment.environment=dev,service.version=1.0.0"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: py-app
+  namespace: otel
+spec:
+  selector:
+    app: py-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8081
