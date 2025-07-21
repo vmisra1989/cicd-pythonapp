@@ -21,9 +21,9 @@ spec:
             - containerPort: 8081
           env:
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: "elastic-apm-server.elastic-system.svc:8200"
+              value: "http://elastic-apm-server.elastic-system.svc:8200"
             - name: OTEL_EXPORTER_OTLP_PROTOCOL
-              value: "gRPC"
+              value: "http/protobuf"
             - name: OTEL_SERVICE_NAME
               value: "py-app"
             - name: OTEL_RESOURCE_ATTRIBUTES
