@@ -21,7 +21,7 @@ spec:
             - containerPort: 8081
           env:
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: "elastic-apm-server.elastic-system.svc:8200/v1/traces"
+              value: "elastic-apm-server.elastic-system.svc:8200/"
             
             - name: OTEL_EXPORTER_OTLP_HEADERS
               value: "Authorization=Bearer Wl9sQ0xKZ0JWNlJDY3RrRTlvY0U6cWZ4X0lxX0dwQXE2TGptdkFNWEpnQQ=="
@@ -30,7 +30,7 @@ spec:
             - name: OTEL_LOGS_EXPORTER
               value: "otlp"
             - name: OTEL_RESOURCE_ATTRIBUTES
-              value: "service.name=py-app,service.version=1.0.0,deployment.environment=dev"
+              value: "service.name=pyapp,service.version=1.0.0,deployment.environment=dev"
 
 ---
 apiVersion: v1
