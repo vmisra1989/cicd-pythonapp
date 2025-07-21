@@ -2,7 +2,7 @@
 import time
 from opentelemetry import trace
 from opentelemetry.sdk.trace import TracerProvider
-
+from opentelemetry.sdk.resources import Resource
 resource = Resource.create({
     "service.name": "py-app",
     "service.version": "1.0.0",
@@ -38,6 +38,13 @@ trace.get_tracer_provider().add_span_processor(
 
 with tracer.start_as_current_span("example-span"):
     print("Sending trace to Elastic APM Server directly via OTLP http")
+
+
+with tracer.start_as_current_span("example-transaction", kind=trace.SpanKind.SERVER) as span:
+    span.set_attribute("http.method", "GET")
+    span.set_attribute("http.url", "/example")
+    print("Sending trace to Elastic APM Server directly via OTLP http")
+
 
 # Keep the app alive
 while True:

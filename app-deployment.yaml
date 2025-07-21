@@ -2,21 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: py-app
+  name: pyapp
   namespace: otel
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: py-app
+      app: pyapp
   template:
     metadata:
       labels:
-        app: py-app
+        app: pyapp
     spec:
       containers:
-        - name: py-app
-          image: vmisra1989/py-app:9.0
+        - name: pyapp
+          image: vmisra1989/pyapp:1.0
           ports:
             - containerPort: 8081
           env:
@@ -36,11 +36,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: py-app
+  name: pyapp
   namespace: otel
 spec:
   selector:
-    app: py-app
+    app: pyapp
   ports:
     - protocol: TCP
       port: 8081
