@@ -2,16 +2,32 @@
 import time
 from opentelemetry import trace
 from opentelemetry.sdk.trace import TracerProvider
+
+resource = Resource.create({
+    "service.name": "py-app",
+    "service.version": "1.0.0",
+    "deployment.environment": "dev"
+})
+
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
 import logging
 logging.basicConfig(level=logging.DEBUG)
 
-trace.set_tracer_provider(TracerProvider())
+from opentelemetry.sdk.resources import Resource
+
+resource= Resource.create({
+"service.name": "py-app",
+"service.version": "1.0.0",
+"deployment.environment": "dev"
+
+})
+
+trace.set_tracer_provider(TracerProvider(resource=resource))
 tracer = trace.get_tracer(__name__)
 
 otlp_exporter = OTLPSpanExporter(
-    endpoint="http://elastic-apm-server.elastic-system.svc:8200",  # no http:// prefix for gRPC
+    endpoint="http://elastic-apm-server.elastic-system.svc:8200/v1/traces",  # no http:// prefix for gRPC
     headers={"Authorization": "Bearer N3Rha0daZ0J5Z0RILVBja1d1Z3Q6U1NYU0RHU3B0RXYwNUowdTY3RTVldw=="},
 )
 print("Using OTLP endpoint:", otlp_exporter._endpoint)
