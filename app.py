@@ -12,7 +12,7 @@ tracer = trace.get_tracer(__name__)
 
 otlp_exporter = OTLPSpanExporter(
     endpoint="elastic-apm-server.elastic-system.svc:8200",  # no http:// prefix for gRPC
-    headers={"authorization": "Bearer N3Rha0daZ0J5Z0RILVBja1d1Z3Q6U1NYU0RHU3B0RXYwNUowdTY3RTVldw=="},
+    headers={"authorization": "Bearer Wl9sQ0xKZ0JWNlJDY3RrRTlvY0U6cWZ4X0lxX0dwQXE2TGptdkFNWEpnQQ=="},
     insecure=True  # if your APM server does not use TLS
 )
 print("Using OTLP endpoint:", otlp_exporter._endpoint)
