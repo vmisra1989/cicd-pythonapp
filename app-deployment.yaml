@@ -21,7 +21,7 @@ spec:
             - containerPort: 8081
           env:
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: "http://elastic-apm-server.elastic-system.svc:8200/v1/traces"
+              value: "elastic-apm-server.elastic-system.svc:8200/v1/traces"
             
             - name: OTEL_EXPORTER_OTLP_HEADERS
               value: "Authorization=Bearer Wl9sQ0xKZ0JWNlJDY3RrRTlvY0U6cWZ4X0lxX0dwQXE2TGptdkFNWEpnQQ=="
