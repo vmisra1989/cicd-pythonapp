@@ -24,7 +24,7 @@ spec:
               value: "http://elastic-apm-server.elastic-system.svc:8200/v1/traces"
             
             - name: OTEL_EXPORTER_OTLP_HEADERS
-              value: "Authorization=Bearer N3Rha0daZ0J5Z0RILVBja1d1Z3Q6U1NYU0RHU3B0RXYwNUowdTY3RTVldw=="
+              value: "Authorization=Bearer Wl9sQ0xKZ0JWNlJDY3RrRTlvY0U6cWZ4X0lxX0dwQXE2TGptdkFNWEpnQQ=="
             - name: OTEL_METRICS_EXPORTER
               value: "otlp"
             - name: OTEL_LOGS_EXPORTER
